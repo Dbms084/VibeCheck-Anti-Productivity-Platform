@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-pink: #ff007f;
+  --color-hot-pink: #ff69b4;
+  --color-lime-chaos: #39ff14;
+  --color-vibe-purple: #9d00ff;
+
+  --font-caveat: var(--font-caveat), cursive;
+  --font-dancing: var(--font-dancing), cursive;
+  --font-indie: var(--font-indie), cursive;
+  --font-marker: var(--font-marker), cursive;
+  --font-apple: var(--font-apple), cursive;
+  --font-comic: "Comic Sans MS", "Comic Sans", cursive;
+  --font-papyrus: "Papyrus", "fantasy";
+  --font-brush: "Brush Script MT", cursive;
+  --font-courier: "Courier New", Courier, monospace;
+  --font-impact: "Impact", "Arial Narrow Bold", sans-serif;
+
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+  --animate-rainbow: rainbow 5s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { filter: hue-rotate(0deg); text-shadow: 0 0 5px #ff007f; }
+  50% { filter: hue-rotate(180deg); text-shadow: 0 0 20px #39ff14; transform: scale(1.05); }
+  100% { filter: hue-rotate(360deg); text-shadow: 0 0 5px #ff007f; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes rainbow {
+  0% { color: #ff007f; }
+  25% { color: #39ff14; }
+  50% { color: #00ffff; }
+  75% { color: #9d00ff; }
+  100% { color: #ff007f; }
+}
+
+body {
+  background: black;
+  color: white;
+}
+
+/* Hide scrollbar for cleaner chaos */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Anti-alignment classes */
+.rot-1 { transform: rotate(2deg); }
+.rot-2 { transform: rotate(-3deg); }
+.rot-3 { transform: rotate(5deg); }
+.rot-4 { transform: rotate(-5deg); }
+
+.off-1 { margin-left: -20px; }
+.off-2 { margin-right: -30px; }
+.off-3 { margin-top: 15px; }
+
+.glitter-text {
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(90deg, #ff007f, #9d00ff, #00ffff, #39ff14, #ff007f);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
