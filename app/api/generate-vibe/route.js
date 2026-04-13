@@ -20,7 +20,7 @@ export async function POST(req) {
     }
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }); 
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" }); 
 
     const prompt = `You are a satirical "anti-nerd" life coach. You hate logic, data, and efficiency. You love vibes, feelings, aesthetics, and wasting time. 
 Generate a short (1-2 sentences max), savage, and sassy reply that discourages work and encourages scrolling or buying things. 
@@ -33,7 +33,9 @@ User said: "${message}"`;
 
     return Response.json({ response: text }, { status: 200 });
   } catch (error) {
-    console.error("Gemini API Error:", error);
-    return Response.json({ error: "The vibes are off right now. Please go touch grass and try again." }, { status: 500 });
+    console.error("Gemini API Error:", (error && error.message) || error);
+    // Graceful fallback if the API fails, quota is exceeded, or key is leaked
+    const randomFallback = FALLBACK_RESPONSES[Math.floor(Math.random() * FALLBACK_RESPONSES.length)];
+    return Response.json({ response: randomFallback }, { status: 200 });
   }
 }
