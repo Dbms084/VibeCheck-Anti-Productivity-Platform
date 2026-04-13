@@ -34,3 +34,7 @@ npm run dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to experience peak anti-productivity.
+
+# Screenshots of the platform
+![alt text](image.png)
+![alt text](image-1.png)
